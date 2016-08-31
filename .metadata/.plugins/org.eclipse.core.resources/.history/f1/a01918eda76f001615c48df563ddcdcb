@@ -10,6 +10,6 @@ public class Calculate {
 	public static double average(double number) {
 		double number;
 		double number2;
-		return ((number + number2)/2);
+		return ((number + number2)/2)
 	}
 }

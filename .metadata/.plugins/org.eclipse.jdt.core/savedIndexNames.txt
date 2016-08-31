@@ -1,6 +1,5 @@
 INDEX VERSION 1.129+C:\Users\APCS2\Desktop\tylerh_APCS2_Fall2016\.metadata\.plugins\org.eclipse.jdt.core
 2586550592.index
 3240577434.index
-2045158475.index
 468246969.index
 2380175872.index
