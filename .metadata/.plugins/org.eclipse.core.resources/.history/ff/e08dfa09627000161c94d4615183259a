@@ -8,9 +8,8 @@ public class Calculate {
 		return(number * number * number);
 	}
 	public static double average(double number) {
-		return ((number + number)/2);
-	}
-	public static double average(double number) {
-		return ((number + number + number)/2)
+		double num;
+		double number2;
+		return ((number + number2)/2);
 	}
 }

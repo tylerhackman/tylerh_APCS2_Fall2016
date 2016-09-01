@@ -7,10 +7,9 @@ public class Calculate {
 	public static int cube(int number) {
 		return(number * number * number);
 	}
-	public static double average(double number) {
-		return ((number + number)/2);
-	}
-	public static double average(double number) {
-		return ((number + number + number)/2)
+	public static double average((double number) + double number2) {
+		double number;
+		double number2;
+		return ((number1 + number2)/2);
 	}
 }
