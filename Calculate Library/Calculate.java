@@ -1,6 +1,6 @@
-
+// Calculate.java Tyler Hackman
 public class Calculate {
-	
+ 
 	public static int square(int number) {
 		return(number * number);
 	}	
@@ -34,7 +34,9 @@ public class Calculate {
 		return "" + (number3 * number) + variable + "^2 + "  + (number * number) + variable + " - " + (number4 * number2);
 	}
 	public static boolean isDivisibleBy(int number, int number2) {
-		
+		if (number == 0 && number2 == 0) {
+			throw new IllegalArgumentException("numbers != 0");
+		}
 		if ((number%number2) == 0) {
 			return true;
 		}
@@ -87,5 +89,75 @@ public class Calculate {
     	return ans;
 
     }
+    public static double exponent(double base, int exponent) {
+    	if (exponent < 0) {
+			throw new IllegalArgumentException("exponent must be > 0");
+		}
+    	double x = 1;
+		for (int i = 1; i <= exponent; i++) {
+			x = x * base;
+		}
+		return x;
+	}
+	public static int factorial(int x) {
+		if (x < 0) {
+			throw new IllegalArgumentException("number must be >= 0");
+		}
+		int product = 1;
+		for (int i = 2; i <= x; i++) {
+			product = product * i;
+		}	
+		return product;
+	}
+	public static boolean isPrime(int x) {
+		for(int i = 2; i < x; i++){
+			if(Calculate.isDivisibleBy(x, i) == true) {
+				return false;
+			}
+		}
+		return true;
+	}
+	public static int gcf(int number, int number2) {
+		int y = 1;
+		int x = Calculate.max(number, number2);
+		for(int i = 1; i < x; i++) {
+			if(Calculate.isDivisibleBy(number, i) == true && Calculate.isDivisibleBy(number2, i) == true) {
+				y = i;
+			}
+		}
+			return y;
+	}
+	public static double sqrt(double number) {
+		 if (number < 0) {
+	        	throw new IllegalArgumentException("number must be >= 0");
+		 }
+			double x;
+			double sqrt = number / 2;
+			do {
+				x = sqrt;
+				sqrt = (x + (number / x)) / 2;
+			} while ((x - sqrt) != 0);
+			return Calculate.round2(sqrt);
+		}
+	public static String quadForm(int a, int b, int c) {
+		 double ax =a;
+		 double bx = b;
+		 double cx = c;
+		 double dx = 0;
+		 double x = Calculate.discriminant(ax, bx, cx);
+				 if (x < 0) {
+					 return "no real roots";
+				 }
+				 else {
+					 if (x == 0) { 
+						 dx = Calculate.round2((-b/(2*a)));
+						 return "" + dx;
+					 }
+				     else {
+				    	double firstroot = Calculate.round2(( - b + Calculate.sqrt(x))/(2*a));
+				        double secondroot = Calculate.round2((-b - Calculate.sqrt(x))/(2*a)); 
+				        return "roots = " + firstroot + " " + secondroot;
+						 }
+					 }
+	}
 }
-
