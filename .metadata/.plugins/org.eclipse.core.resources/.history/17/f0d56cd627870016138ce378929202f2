@@ -39,7 +39,7 @@ public class ProcessingNumbers {
 					if (inputNumber < min) {
 					min = inputNumber;
 					}
-				
+				}
 			}
 		}
 				
@@ -48,6 +48,4 @@ public class ProcessingNumbers {
 	System.out.println("min: " + min + " max: " + max);
 	System.out.println("");
 	System.out.println("Sum of even numbers: " + evenSum + " Largest even number: " + maxEven);
-	}
 }
-

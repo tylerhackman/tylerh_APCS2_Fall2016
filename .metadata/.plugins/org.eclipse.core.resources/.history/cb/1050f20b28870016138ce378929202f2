@@ -50,4 +50,3 @@ public class ProcessingNumbers {
 	System.out.println("Sum of even numbers: " + evenSum + " Largest even number: " + maxEven);
 	}
 }
-
