@@ -7,24 +7,26 @@ public class ProcessingNumbers {
 		System.out.println("How many terms will you enter?");
 		int terms = userInput.nextInt();
 		System.out.println("Enter your " + terms + " integers");
+		
 		int max = userInput.nextInt();
 		int min = max;
-		boolean first = true;
+		boolean firstEven = true;
 		int inputNumber;
 		int evenSum = 0;
-		int maxEven;
+		int maxEven = 0;
+		
 		if(min % 2 == 0) {
 			evenSum = min;
 			maxEven = min;
-			first = false;
+			firstEven = false;
 		}
-		for(int i = 1; i<= terms; i++) {
+		for(int i = 1; i < terms; i++) {
 			inputNumber = userInput.nextInt();
 			if (inputNumber % 2 == 0) {
-				if (first == true) {
+				if (firstEven == true) {
 					maxEven = inputNumber;
 					evenSum = inputNumber;
-					first = false;
+					firstEven = false;
 				}
 				else {
 					if (inputNumber > maxEven) {
@@ -40,14 +42,15 @@ public class ProcessingNumbers {
 					min = inputNumber;
 					}
 				
-			}
+				}
+			}		
 		}
-				
-		
-	}
+	System.out.println(" ");
 	System.out.println("min: " + min + " max: " + max);
 	System.out.println("");
 	System.out.println("Sum of even numbers: " + evenSum + " Largest even number: " + maxEven);
+	userInput.close();	
 	}
 }
+
 
