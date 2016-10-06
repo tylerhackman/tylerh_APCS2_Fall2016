@@ -1,3 +1,4 @@
+
 public class Magpie2 {
 
 	//Get a default greeting and return a greeting	
@@ -42,7 +43,7 @@ public class Magpie2 {
 	 * returns a non-committal string
 	 */
 	private String getRandomResponse() {
-		final int NUMBER_OF_RESPONSES = 6;
+		final int NUMBER_OF_RESPONSES = 4;
 		double r = Math.random();
 		int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
 		String response = "";
@@ -55,12 +56,6 @@ public class Magpie2 {
 			response = "Do you really think so?";
 		} else if (whichResponse == 3) {
 			response = "You don't say.";
-		}
-		else if (whichResponse == 4) {
-			response = "You are very interesting.";
-		}
-		else if (whichResponse == 5) {
-			response = "Don't you know any real people to talk to?";
 		}
 
 		return response;
