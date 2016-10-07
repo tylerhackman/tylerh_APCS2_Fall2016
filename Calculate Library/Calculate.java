@@ -95,14 +95,17 @@ public class Calculate {
     	}
     }
     // returns a double rounded to two decimal places
-    public static double round2(double number) {
-    	
-    	double x = (number*100);
-    	int y = (int) x;
-    	double ans = (double) y/100;
-    	return ans;
-
-    }
+    public static double round2(double x) {
+		int ans = ((int) (x * 100));
+		if ((x * 100) - ans >= 0.5) {
+			double y = ((int) ((x * 100) + 1) / 100.00);
+			return y;
+		}
+		else {
+			double z= ((int) (x * 100) / 100.0);
+			return z;
+		}
+	}
     // calculates and returns the value of a given number put to a given power
     public static double exponent(double base, int exponent) {
     	if (exponent < 0) {
@@ -184,6 +187,6 @@ public class Calculate {
 				        	return "roots = " + secondroot + " and " + firstroot;
 				        }
 					 }
+				 }
 	}
-}
 }
