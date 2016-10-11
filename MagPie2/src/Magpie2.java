@@ -12,7 +12,10 @@ public class Magpie2 {
 	 */
 	public String getResponse(String statement) {
 		String response = "";
-		if (statement.indexOf("no") >= 0) {
+		if (statement.trim().length() < 1) {
+			response = "Say something, please."; 
+		}
+			else if (statement.indexOf("no") >= 0) {
 			response = "Why so negative?";
 		} else if (statement.indexOf("mother") >= 0
 				|| statement.indexOf("father") >= 0
@@ -26,15 +29,16 @@ public class Magpie2 {
 			response = "Your teachers sound like they know what they're doing.";
 		}
 		else if (statement.indexOf("Trump") >= 0
-				|| statement.indexOf("Pence") >= 0
+				|| statement.indexOf("Donald") >= 0
 				|| statement.indexOf("trump") >= 0
-				|| statement.indexOf("pence") >= 0) {
+				|| statement.indexOf("donald") >= 0) {
 			response = "Let's make America great again!";
 		}
 		else {
 			response = getRandomResponse();
 		}
 		return response;
+	
 	}
 
 	/**
