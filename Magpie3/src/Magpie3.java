@@ -1,4 +1,4 @@
-public class Magpie3 {
+ public class Magpie3 {
 
 	//Get a default greeting and return a greeting
 	public String getGreeting() {
@@ -24,28 +24,30 @@ public class Magpie3 {
 	
 	
 	public String getResponse(String statement) {
-		
 		String response = "";
 		if (statement.trim().length() < 1) {
 			response = "Say something, please."; 
 		}
-			else if (statement.indexOf("no") >= 0) {
+			else if (findKeyword(statement, "no", 0) >= 0) {
 			response = "Why so negative?";
-		} else if (statement.indexOf("mother") >= 0
-				|| statement.indexOf("father") >= 0
-				|| statement.indexOf("sister") >= 0
-				|| statement.indexOf("brother") >= 0) {
+		} else if (findKeyword(statement, "mother", 0) >= 0
+	         	|| findKeyword(statement, "father", 0) >= 0
+				|| findKeyword(statement, "sister", 0) >= 0
+				|| findKeyword(statement, "brother", 0) >= 0) {
 			response = "Tell me more about your family.";
 		}
-		else if (statement.indexOf("Dreyer") >= 0
-				|| statement.indexOf("deHeer") >= 0
-				|| statement.indexOf("Lamont") >= 0) {
+		else if (findKeyword(statement, "dog",0) >= 0
+				|| findKeyword(statement, "cat",0) >= 0
+				|| findKeyword(statement," mouse",0) >= 0
+				|| findKeyword(statement, "bird",0) >= 0) {
+			response = "I'm not a fan of animals.";
+		}
+		else if (findKeyword(statement, "Dreyer", 0) >= 0
+				|| findKeyword(statement, "deHeer", 0) >= 0
+				|| findKeyword(statement, "Lamont", 0) >= 0) {
 			response = "Your teachers sound like they know what they're doing.";
 		}
-		else if (statement.indexOf("Trump") >= 0
-				|| statement.indexOf("Donald") >= 0
-				|| statement.indexOf("trump") >= 0
-				|| statement.indexOf("donald") >= 0) {
+		else if (findKeyword(statement, "donald trump", 0) >= 0) {
 			response = "Let's make America great again!";
 		}
 		else {
