@@ -1,7 +1,9 @@
 import java.util.Arrays;
 
+
 public class Split 
 {
+
 
 	public static void main(String[] args) 
 	{
@@ -22,26 +24,63 @@ public class Split
 		 * use String.split to split up the sandwich by the word "bread" and return what's in the middle of the sandwich and ignores what's on the outside
 		 * What if it's a fancy sandwich with multiple pieces of bread?
 		*/
-		
-	    String sandwich = "applespineapplesbreadlettucetomatobaconmayohambreadcheese";
-	    sandwichSplit(sandwich);
+
+		// Not a sandwich
+		sandwichSplit("breadbread");
+	  //  sandwichSplit("bread");
+	    
+	    //Sandwiches
+		//sandwichSplit("applespineapplesbreadlettucetomatobaconmayohambreadcheese");
+	    //sandwichSplit("breadcheesebread");
+	    //sandwichSplit("cheesebreadbread");
+
 	    
 
+
 		//Your task pt 2:
-		/*Write a method that take in a string like "apples pineapples bread lettus tomato bacon mayo ham bread cheese" describing a sandwich
+		/*Write a method that take in a string like "apples pineapples bread lettuce tomato bacon mayo ham bread cheese" describing a sandwich
 		 * use String.split to split up the sandwich at the spaces, " ", and return what's in the middle of the sandwich and ignores what's on the outside
 		 * Again, what if it's a fancy sandwich with multiple pieces of bread?
 		*/
-
+		
+		//sandwichSplitBySpaces("bread bread");
 		
 
+
 	}
+
 
 	public static void sandwichSplit(String x) {
-		String y = x.substring(x.indexOf("bread")+5, x.lastIndexOf("bread"));
-		String [] s = y.split("bread");
-		System.out.println(Arrays.toString(s));
-		return;
-	}
+		if(x.indexOf("bread")>=0) { 
+			if (x.lastIndexOf("bread")!= x.indexOf("bread") + 5) {
+				if (x.lastIndexOf("bread")!= x.indexOf("bread")) {
+			
+				String y = x.substring(x.indexOf("bread")+5, x.lastIndexOf("bread"));
+				String [] s = y.split("bread");
+				System.out.println(Arrays.toString(s));
+				}
+			
+			else{
+				System.out.println("This is not a sandwich");
+			}
+			//if (x.indexOf("bread")>=0 && x.lastIndexOf("bread")!= x.indexOf("bread") + 5) {
+			//	System.out.println("This is not a sandwich");
+			//}
+			}
+		}
 
+	}
+	public static void sandwichSplitBySpaces(String x) {
+		if(x.indexOf("bread")>=0 && x.lastIndexOf("bread")!= x.indexOf("bread") + 6) {
+			
+		String y = x.substring(x.indexOf("bread")+6, x.lastIndexOf("bread"));
+		String [] s = y.split(" ");
+		System.out.println(Arrays.toString(s));
+		}
+		else{
+		System.out.println("This is not a sandwich");
+		}
+	}
 }
+
+
