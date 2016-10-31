@@ -35,7 +35,7 @@ public class Split {
 		// Sandwiches
 		//sandwichSplit("applespineapplesbreadlettucetomatobaconmayohambreadcheese");
 		//sandwichSplit("breadcheesebread");
-		sandwichSplit("cheesebreadbreadcheesebreadbread");
+		sandwichSplit("ham");
 
 		// Your task pt 2:
 		/*
