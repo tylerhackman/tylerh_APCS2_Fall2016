@@ -1,4 +1,5 @@
- package fracCalc;
+// FracCalc.java Checkpoint 1 Tyler Hackman 11/8/2016
+package fracCalc;
 import java.util.*;
 public class FracCalcCheckpoint1 {
 

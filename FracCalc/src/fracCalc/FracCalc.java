@@ -1,4 +1,4 @@
-// FracCalc.java Checkpoint 2 Tyler Hackman 11/21/2016
+// FracCalc.java Tyler Hackman 12/1/2016
 package fracCalc;
 import java.util.*;
 public class FracCalc {
@@ -28,48 +28,65 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String input) { 
     	
-    	//Create variable for first operand, and the parts of the first operand
+    	//Parse input into firstOperand, operator, and secondOperand.
         String firstOperand = input.substring(0, input.indexOf(" "));
-        int whole1 = 0;
-        int numerator1 = 0;
-        int denominator1 = 1;
-        if (firstOperand.indexOf("_") > 0) {
-        	whole1 = Integer.valueOf(firstOperand.substring(0, firstOperand.indexOf("_")));
-        }
-        else {
-        	if (firstOperand.indexOf("/") < 0) {
-        		whole1 = Integer.valueOf(firstOperand);
-        	}
-        }
-        if (firstOperand.indexOf("/") > 0) {
-        	numerator1 = Integer.valueOf(firstOperand.substring(firstOperand.indexOf("_") + 1, firstOperand.indexOf("/")));
-        	denominator1 = Integer.valueOf(firstOperand.substring(firstOperand.indexOf("/") + 1));
-        }   
-        
-        //Create a variable to store the operator
         String operator = input.substring((input.indexOf(" ")+ 1)); 
-        
-        //Create variables for the second operand and the parts of the second operand
         String secondOperand = input.substring(input.lastIndexOf(" ") + 1);
-        int whole2 = 0;
-        int numerator2 = 0;
-        int denominator2 = 1;
-        if (secondOperand.indexOf("_") > 0) {
-        	whole2 = Integer.valueOf(secondOperand.substring(0, secondOperand.indexOf("_")));
-        }
-        else {
-        	if (secondOperand.indexOf("/") < 0) {
-        		whole2 = Integer.valueOf(secondOperand);
-        	}
-        }
-        if (secondOperand.indexOf("/") > 0) {
-        	numerator2 = Integer.valueOf(secondOperand.substring(secondOperand.indexOf("_") + 1, secondOperand.indexOf("/")));
-        	denominator2 = Integer.valueOf(secondOperand.substring(secondOperand.indexOf("/") + 1));
-        }
-        //Return a description of the second operand
-        return "whole:" + whole2 + " numerator:" + numerator2 + " denominator:" + denominator2;
+        
+        //Create integer arrays for the parts of each operand.
+        int firstOperandArray [] = parseOperand(firstOperand);
+        int secondOperandArray [] = parseOperand(secondOperand);
+       
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
+    public static int [] parseOperand(String operand) {
+        int whole = 0;
+        int numerator = 0;
+        int denominator = 1;
+        if (operand.indexOf("_") > 0) {
+        	whole = Integer.valueOf(operand.substring(0, operand.indexOf("_")));
+        }
+        else {
+        	if (operand.indexOf("/") < 0) {
+        		whole = Integer.valueOf(operand);
+        	}
+        }
+        if (operand.indexOf("/") > 0) {
+        	numerator = Integer.valueOf(operand.substring(operand.indexOf("_") + 1, operand.indexOf("/")));
+        	denominator = Integer.valueOf(operand.substring(operand.indexOf("/") + 1));
+        }
+        int operandArray [] = new int [] { whole, numerator, denominator};
+        return operandArray;
+    }
     
+    public static int[] toImproperFrac(int whole, int numerator, int denominator) {
+    	numerator = ((whole * denominator) + numerator);
+    	int returnArray[] = new int [] { numerator, denominator};
+    	return returnArray;
+    }
+    
+    public static String addFrac(int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2) {
+    	numerator1 *= denominator2;
+    	numerator2 *= denominator1;
+    	denominator1 *= denominator2;
+    	numerator1 += numerator2;
+    	whole1 += whole2;
+    	return whole1 + "_" + numerator1 + "/" + denominator1;
+    }
+    
+    public static String subtractFrac(int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2) {
+    	numerator1 *= denominator2;
+    	numerator2 *= denominator1;
+    	denominator1 *= denominator2;
+    	numerator1 -= numerator2;
+    	whole1 -= whole2;
+    	return whole1 + "_" + numerator1 + "/" + denominator1;
+    }
+    
+    public static String multiplyFrac(int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2) {
+    	if(whole1 != 0) {
+    		toImproperFrac()
+    	}
+    }
 }
