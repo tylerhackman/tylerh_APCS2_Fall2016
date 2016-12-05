@@ -85,74 +85,8 @@ public class FracCalc {
     }
     
     public static String multiplyFrac(int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2) {
-    	//Test if each operand is a mixed number, convert to an improper fraction if it is.
-    	int newNumerator;
-    	int newDenominator;
-    	String returnString = "";
-    	if(whole1 != 0 && whole2 != 0) {
-    		int [] operand1 = toImproperFrac(whole1, numerator1, denominator1);
-        	int [] operand2 = toImproperFrac(whole2, numerator2, denominator2);
-        	newNumerator = operand1[0] * operand2[0];
-        	newDenominator = operand1[1] * operand2[1];
-        	returnString =  newNumerator + "/" + newDenominator;
-    	}
-    	else {
-    		if(whole1 != 0 && whole2 == 0) {
-        		int [] operand1 = toImproperFrac(whole1, numerator1, denominator1);
-            	newNumerator = operand1[0] * numerator2;
-            	newDenominator = operand1[1] * denominator2;
-            	returnString =  newNumerator + "/" + newDenominator;
-        	}
-    		else{
-    			if(whole2 != 0 && whole1 == 0) {
-            		int [] operand2 = toImproperFrac(whole2, numerator2, denominator2);
-                	newNumerator = operand2[0] * numerator1;
-                	newDenominator = operand2[1] * denominator1;
-                	returnString =  newNumerator + "/" + newDenominator;
-            	}
-    	}
-    	if(whole1 == 0 && whole2 == 0) {
-    	newNumerator = numerator1 * numerator2;
-    	newDenominator = denominator1 * denominator2;
-    	returnString =  newNumerator + "/" + newDenominator;
+    	if(whole1 != 0) {
+    		toImproperFrac()
     	}
     }
-    	return returnString;
 }
-    public static String divideFrac(int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2) {
-    	//Test if each operand is a mixed number, convert to an improper fraction if it is.
-    	int newNumerator;
-    	int newDenominator;
-    	String returnString = "";
-    	if(whole1 != 0 && whole2 != 0) {
-    		int [] operand1 = toImproperFrac(whole1, numerator1, denominator1);
-        	int [] operand2 = toImproperFrac(whole2, numerator2, denominator2);
-        	newNumerator = operand1[0] * operand2[1];
-        	newDenominator = operand1[1] * operand2[0];
-        	returnString =  newNumerator + "/" + newDenominator;
-    	}
-    	else {
-    		if(whole1 != 0 && whole2 == 0) {
-        		int [] operand1 = toImproperFrac(whole1, numerator1, denominator1);
-            	newNumerator = operand1[0] * denominator2;
-            	newDenominator = operand1[1] * numerator2;
-            	returnString =  newNumerator + "/" + newDenominator;
-        	}
-    		else{
-    			if(whole2 != 0 && whole1 == 0) {
-            		int [] operand2 = toImproperFrac(whole2, numerator2, denominator2);
-                	newNumerator = operand2[0] * denominator1;
-                	newDenominator = operand2[1] * numerator1;
-                	returnString =  newNumerator + "/" + newDenominator;
-            	}
-    	}
-    	if(whole1 == 0 && whole2 == 0) {
-    	newNumerator = numerator1 * denominator2;
-    	newDenominator = denominator1 * numerator2;
-    	returnString =  newNumerator + "/" + newDenominator;
-    	}
-    }
-    	return returnString;
-}
-}
-
