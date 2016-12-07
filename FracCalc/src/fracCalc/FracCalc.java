@@ -30,13 +30,31 @@ public class FracCalc {
     	
     	//Parse input into firstOperand, operator, and secondOperand.
         String firstOperand = input.substring(0, input.indexOf(" "));
-        String operator = input.substring((input.indexOf(" ")+ 1)); 
+        String operator = input.substring((input.indexOf(" ")+ 1), (input.indexOf(" ")+ 2)); 
         String secondOperand = input.substring(input.lastIndexOf(" ") + 1);
-        
+
         //Create integer arrays for the parts of each operand.
         int firstOperandArray [] = parseOperand(firstOperand);
         int secondOperandArray [] = parseOperand(secondOperand);
-       
+        
+        //Test to find out what operator is being used, call different operation methods depending on operator
+        //Set result to the value returned from the operation method
+        if (operator.equals("+")) {
+        	return addFrac(firstOperandArray[0], firstOperandArray[1], firstOperandArray[2], secondOperandArray[0], secondOperandArray[1], secondOperandArray[2]);
+        }
+        else {
+        	if (operator.equals("-")) {
+        		return subtractFrac(firstOperandArray[0], firstOperandArray[1], firstOperandArray[2], secondOperandArray[0], secondOperandArray[1], secondOperandArray[2]);
+        	}
+        	else {
+        		if (operator.equals("*")) {
+        			return multiplyFrac(firstOperandArray[0], firstOperandArray[1], firstOperandArray[2], secondOperandArray[0], secondOperandArray[1], secondOperandArray[2]);
+        		}
+        		else {
+        			return divideFrac(firstOperandArray[0], firstOperandArray[1], firstOperandArray[2], secondOperandArray[0], secondOperandArray[1], secondOperandArray[2]);
+        		}
+        	}
+        }
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
@@ -61,18 +79,43 @@ public class FracCalc {
     }
     
     public static int[] toImproperFrac(int whole, int numerator, int denominator) {
+    	if (whole >= 0){
     	numerator = ((whole * denominator) + numerator);
+    	}
+    	else {
+    		whole *= -1;
+    		numerator = ((whole * denominator) + numerator);
+    		numerator *= -1;
+    	}
     	int returnArray[] = new int [] { numerator, denominator};
     	return returnArray;
+    	
     }
     
     public static String addFrac(int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2) {
-    	numerator1 *= denominator2;
-    	numerator2 *= denominator1;
-    	denominator1 *= denominator2;
-    	numerator1 += numerator2;
-    	whole1 += whole2;
-    	return whole1 + "_" + numerator1 + "/" + denominator1;
+    	int newNumerator = 0;
+    	int newDenominator = 0;
+    	int newWhole = 0;
+    	if (denominator1 != denominator2){
+    	numerator1 = numerator1 * denominator2;
+    	numerator2 = numerator2 * denominator1;
+    	newDenominator = denominator1 * denominator2;
+    	}
+    	else{
+    	newDenominator = denominator1;
+    	}
+    	if (whole1 < 0){
+    		numerator1 *= -1;
+    	}
+    	if (whole2 < 0){
+    		numerator2 *= -1;
+    	}
+    	newNumerator = numerator1 + numerator2;
+    	if (newNumerator < 0){
+    		newNumerator *= -1;
+    	}
+    	newWhole = whole1 + whole2;
+    	return newWhole + "_" + newNumerator + "/" + newDenominator;
     }
     
     public static String subtractFrac(int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2) {
@@ -80,6 +123,9 @@ public class FracCalc {
     	numerator2 *= denominator1;
     	denominator1 *= denominator2;
     	numerator1 -= numerator2;
+    	if (numerator1 < 0){
+    		numerator1 *= -1;
+    	}
     	whole1 -= whole2;
     	return whole1 + "_" + numerator1 + "/" + denominator1;
     }
@@ -121,10 +167,13 @@ public class FracCalc {
 }
     public static String divideFrac(int whole1, int numerator1, int denominator1, int whole2, int numerator2, int denominator2) {
     	//Test if each operand is a mixed number, convert to an improper fraction if it is.
+    	//Make variables for the new numerator and denominator.
     	int newNumerator;
     	int newDenominator;
     	String returnString = "";
+    	
     	if(whole1 != 0 && whole2 != 0) {
+    		//Both operands are mixed numbers.
     		int [] operand1 = toImproperFrac(whole1, numerator1, denominator1);
         	int [] operand2 = toImproperFrac(whole2, numerator2, denominator2);
         	newNumerator = operand1[0] * operand2[1];
@@ -133,25 +182,28 @@ public class FracCalc {
     	}
     	else {
     		if(whole1 != 0 && whole2 == 0) {
+    			//The first operand is a mixed number.
         		int [] operand1 = toImproperFrac(whole1, numerator1, denominator1);
             	newNumerator = operand1[0] * denominator2;
             	newDenominator = operand1[1] * numerator2;
             	returnString =  newNumerator + "/" + newDenominator;
         	}
-    		else{
-    			if(whole2 != 0 && whole1 == 0) {
-            		int [] operand2 = toImproperFrac(whole2, numerator2, denominator2);
-                	newNumerator = operand2[0] * denominator1;
-                	newDenominator = operand2[1] * numerator1;
-                	returnString =  newNumerator + "/" + newDenominator;
-            	}
+    			else{
+    				//The second operand is a mixed number.
+    				if(whole2 != 0 && whole1 == 0) {
+    					int [] operand2 = toImproperFrac(whole2, numerator2, denominator2);
+    					newNumerator = operand2[0] * denominator1;
+    					newDenominator = operand2[1] * numerator1;
+    					returnString =  newNumerator + "/" + newDenominator;
+    				}
+    					else {
+    							//Neither operand is a mixed number.
+    							newNumerator = numerator1 * denominator2;
+    								newDenominator = denominator1 * numerator2;
+    									returnString =  newNumerator + "/" + newDenominator;
+    					}
+    			}
     	}
-    	if(whole1 == 0 && whole2 == 0) {
-    	newNumerator = numerator1 * denominator2;
-    	newDenominator = denominator1 * numerator2;
-    	returnString =  newNumerator + "/" + newDenominator;
-    	}
-    }
     	return returnString;
 }
 }
