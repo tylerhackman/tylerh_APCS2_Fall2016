@@ -205,6 +205,23 @@ public class FracCalc {
     			}
     	}
     	return returnString;
+    }
+    
+    public static int gcf(int numerator, int denominator) {
+    	int gcf = 1;
+		int count;
+    	if (numerator == denominator || numerator > denominator ) {
+    		count = numerator;
+    	}
+    	else {
+    		count = denominator;
+    	}
+		for(int i = 1; i < count; i++) {
+			if(numerator % i == 0 && numerator % i == 0) {
+				gcf = i;
+			}
+		return gcf;
+    }
 }
 }
 
